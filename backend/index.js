@@ -20,7 +20,6 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 // instanciando a conexão com o servidor
 
 //rest api
-
 app.post("/users/login", async (req, res) => {
     //login
     try {
@@ -29,11 +28,13 @@ app.post("/users/login", async (req, res) => {
             email,
             password,
         });
-    
+
         if (error) {
             throw error;
         }
-        return res.status(200).send({ message: "usuário foi conectado!", user});
+        return res
+            .status(200)
+            .send({ message: "usuário foi conectado!", user });
     } catch (error) {
         return res.status(400).send("Failed to log in");
     }
@@ -42,13 +43,13 @@ app.post("/users/login", async (req, res) => {
 app.post("/users/signup", async (req, res) => {
     // sign up
     try {
-        const { name, cpf, password, email, cent_numbers } = req.body;
+        const { name_user, cpf, password, email} = req.body;
         const { data, error } = await supabase.auth.signUp({
             email: email,
             password: password,
             options: {
                 data: {
-                    name,
+                    name_user,
                     cpf,
                     cent_numbers: 10,
                 },
@@ -63,24 +64,31 @@ app.post("/users/signup", async (req, res) => {
             .status(200)
             .send({ message: "Successfully signed up", data });
     } catch (error) {}
-    console.error("Error creating user:", error);
     return res.status(500).send("Failed to create user");
 });
 
 app.post("/users/forgot_password", async (req, res) => {});
 
-app.get("/users/:id", async (req, res) => {
+app.get("/items", async (req, res) => {
     //get
-    const { id } = req.params;
-    const { data, error } = await supabase.from("users").select("*");
-    // .eq('id', id)
-    // .single();
-
-    if (error) {
+    try {
+        const { data, error } = await supabase.from("user_produtos").select(`
+            id, 
+            name, 
+            valor, 
+            image, 
+            descricao,
+            raw_user_meta_data->name_user
+        `);
+        if (error) {
+            throw error;
+        }
+        return res
+            .status(200)
+            .send({ message: "Successfully gathered items", data });
+    } catch (error) {
         console.error("Error fetching user:", error);
-        res.status(500).send("Failed to fetch user");
-    } else {
-        res.send(data);
+        return res.status(500).send("Failed to fetch user");
     }
 });
 
