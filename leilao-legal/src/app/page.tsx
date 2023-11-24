@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { GetServerSideProps } from 'next';
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 import ItemCarrousel from "@/components/ItemCarrousel";
@@ -27,24 +26,11 @@ interface Item {
     data: MyData;
   }
 
-  export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
-    const res = await fetch('http://localhost:3000/items');
-    const data: MyData = await res.json();
-  
-    return {
-      props: { data },
-    };
-  };
 
-// export async function getServerSideProps() {
-//     const res = await fetch('http://localhost:3000/items');
-//     const data = await res.json();
-//     return {
-//         props: { data }, // will be passed to the page component as props
-//     };
-//  }
 
-export default function Home( {data}) {
+
+export default function Home() {
+    
     const images = [
         "/peixes_fish2.jpg",
         "/playstation.jpg",
@@ -52,7 +38,22 @@ export default function Home( {data}) {
         "/furador_de_coco.jpg",
         "/cat.jpg",
     ];
-    return (
+    
+    async function getServerSideProps() {
+        try {
+            const res = await fetch('http://localhost:3000/items');
+            const data = await res.json();
+            return {
+                props: { data }, // will be passed to the page component as props
+            };
+        } catch (error) {
+            console.log(error)
+        }
+     }
+    
+     console.log(getServerSideProps())
+    
+     return (
         <main className="flex w-full h-screen flex-col justify-between ">
             <Header />
             <div className="overflow w-screen  lg:w-1/3 mx-auto my-2">
