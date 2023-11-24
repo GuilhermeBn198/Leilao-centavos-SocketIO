@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
-import Logo from "@/components/Logo";
 import './globals.css'
 
 
@@ -18,7 +17,7 @@ export default function Home() {
       <section className="flex bg-blue-700 h-4/6">
        I am atomic
       </section>
-      <Footer></Footer>
+      <Footer/>
     </main>
   )
 }
