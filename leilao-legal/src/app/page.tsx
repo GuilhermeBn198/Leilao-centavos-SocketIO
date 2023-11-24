@@ -15,9 +15,6 @@ export default function Home() {
     <main className="flex w-full h-screen flex-col justify-between ">
       <Header/>
       <ItemCarrousel/>
-      <section className="flex  h-4/6">
-       I am atomic
-      </section>
       <Footer/>
     </main>
   )
