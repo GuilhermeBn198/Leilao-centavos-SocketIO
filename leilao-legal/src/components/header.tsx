@@ -19,7 +19,7 @@ function Header() {
                 </Link>
             </div>
             <Logo />
-            <Link href="/" className="mr-4">
+            <Link href="/user/[id].js" className="mr-4">
                 <p className="text-periwinkle text-lg font-bold ">
                     Minha Conta <AccountBoxIcon className="w-12 h-12" />
                 </p>
