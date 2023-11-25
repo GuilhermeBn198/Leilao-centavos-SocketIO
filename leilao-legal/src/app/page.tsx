@@ -1,4 +1,5 @@
 "use client";
+import Logo from "@/components/Logo";
 import ChatPage from "@/components/chat/ChatPage";
 import { useConnection } from "@/context/connect";
 import Image from "next/image";
@@ -7,23 +8,26 @@ import { useState } from "react";
 export default function Home() {
     const [showSpinner, setShowSpinner] = useState(false);
     const [showChat, setShowChat] = useState(false);
+
     const [userName, setuserName] = useState("");
-    
-    const {connection} = useConnection()
+    const [userSenha, setUserSenha] = useState("");
+    const [userEmail, setUserEmail] = useState("");
+
+    const { connection } = useConnection();
 
     function handleJoin(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
 
         // logica de login no chat -SocketIO
-        if(userName !== ""){
-            connection.emit("join_room", userName)
-            setShowSpinner(true)
+        if (userName !== "") {
+            connection.emit("join_room", userName);
+            setShowSpinner(true);
             setTimeout(() => {
-                setShowChat(true)
-                setShowSpinner(false)
-            }, 1000)
+                setShowChat(true);
+                setShowSpinner(false);
+            }, 1000);
         }
-        setShowChat(false);  
+        setShowChat(false);
     }
 
     return (
@@ -32,25 +36,29 @@ export default function Home() {
                 className="flex flex-col w-full h-full justify-center items-center gap-2"
                 style={{ display: showChat ? "none" : "" } /**/}
             >
-                <div className="w-1/5">
-                    <Image
-                        src="/logo-dcc-01.png"
-                        alt="Logo Chat-DCC"
-                        width={0}
-                        height={0}
-                        sizes="100vw"
-                        className="w-full h-full"
-                        priority
-                    />
-                </div>
+                <Logo />
                 <div>
-                    <form onSubmit={handleJoin} className="flex gap-2">
+                    <form onSubmit={handleJoin} className="flex gap-2 flex-col">
+                        <input
+                            type="text"
+                            className="rounded px-2 py-3 text-gray-700 border border-gray-400"
+                            placeholder="Digite o seu email"
+                            value={userName}
+                            onChange={(e) => setuserName(e.target.value)}
+                        />
                         <input
                             type="text"
                             className="rounded px-2 py-3 text-gray-700 border border-gray-400"
                             placeholder="Digite o seu usuário"
-                            value={userName}
-                            onChange={(e) => setuserName(e.target.value)}
+                            value={userEmail}
+                            onChange={(e) => setUserEmail(e.target.value)}
+                        />
+                        <input
+                            type="text"
+                            className="rounded px-2 py-3 text-gray-700 border border-gray-400"
+                            placeholder="Digite sua senha"
+                            value={userSenha}
+                            onChange={(e) => setUserSenha(e.target.value)}
                         />
 
                         <button

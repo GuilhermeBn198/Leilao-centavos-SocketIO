@@ -26,10 +26,25 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 io.on("connection", async (socket) => {
     console.log("user connected: ", socket.id)
     
-    socket.on("join_room", (userName) => {
+    const { data, error } = await supabase
+        .from('user_produtos') // replace 'user_produtos' with the name of your view
+        .select('*'); // replace '*' with the columns you want to fetch
+    
+    if (error) {
+        console.error('Error fetching data:', error);
+        return;
+    }
+    
+    socket.on("join_room", async (userName) => {
         console.log(`Username: ${userName} - Socket: ${socket.id}`);
         io.emit('user_joined', `${userName} está online!`); // broadcast message
-    })
+      
+        // Fetch data from Supabase
+      
+        // Send data to client
+        io.emit('data', data);
+      })
+      
 
     socket.on("send-message", (msg) => {
         console.log(msg, "MSG");

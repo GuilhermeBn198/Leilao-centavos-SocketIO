@@ -48,6 +48,9 @@ export default function ChatPage({ userName }: any) {
                 console.log(msg);
                 setUsers((users) => users.filter((user) => user !== msg));
             }); //atualiza a lista de usuários que desconectam
+            connection.on("data", (msg:string) => {
+                // setChatMessages((msgs) => [...msgs, msg]);
+            })
         }
     }, [connection]);
 
