@@ -1,57 +1,3 @@
-"use client"
-import { Login } from '@mui/icons-material'
-import { useState, useEffect } from 'react'
-import Header from "../../leilao-legal/src/Components/Header";
-import Footer from "../../leilao-legal/src/Components/Footer";
-import Image from "next/image";
- 
-function Profile() {
-  const [data, setData] = useState(null)
-  const [isLoading, setLoading] = useState(true)
- 
-  useEffect(() => {
-    fetch('http://localhost:3000/user')
-      .then((res) => res.json())
-      .then((res) => {
-        setData(res.data)
-        setLoading(false)
-      })
-  }, [])
- 
-  if (isLoading) return <p>Loading...</p>
-  if (!data) return <p>No profile data</p>
- 
-  return (
-    <div>
-     {data.map((item, index) => (
-       <div key={index}>
-         <h1>{item.name}</h1>
-         <p>{item.descricao}</p>
-         <Image
-                        src={item.image}
-                        width={100}
-                        height={100}
-                        alt="Picture of the author"
-                    />
-       </div>
-     ))}
-   </div>
-  )
-}
-
-export default function Home() {
-    const data = Profile()
-    return (
-        <main>
-            <Header/>
-            <Login/>
-            {data}
-            <Footer/>
-        </main>
-    )
-}
-
-
 "use client";
 import ChatPage from "@/components/chat/ChatPage";
 import { useConnection } from "@/context/connect";
@@ -126,4 +72,3 @@ export default function Home() {
         </main>
     );
 }
-

@@ -27,7 +27,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "../leilao-legal/src/Components/Footer.tsx", "../leilao-legal/src/Components/Header.tsx", "../leilao-legal/src/Components/Logo.tsx", "../leilao-legal/src/Components/ChatPage.tsx"  ],
   "exclude": [
     "node_modules"
   ]

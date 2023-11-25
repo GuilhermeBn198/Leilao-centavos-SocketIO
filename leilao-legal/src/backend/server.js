@@ -1,11 +1,10 @@
-const { createClient } = require("@supabase/supabase-js");
-const express = require("express");
-const http = require("http");
+const http = require('http')
 const { Server } = require("socket.io")
-require("dotenv").config();
-// imports
 
 const httpServer = http.createServer();
+
+const PORT = process.env.PORT || 3001
+
 const io = new Server(httpServer, {
     cors: {
         origin: "http://localhost:3000",
@@ -14,14 +13,6 @@ const io = new Server(httpServer, {
         credentials: true,
     },
 })
-
-const PORT = process.env.PORT || 3001
-const SUPABASE_URL = process.env.SUPABASE_URL;
-const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY;
-// usando variaveis de ambiente
-
-const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-// instanciando a conexão com o servidor
 
 io.on("connection", async (socket) => {
     console.log("user connected: ", socket.id)
