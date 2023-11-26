@@ -6,7 +6,7 @@ export default function Home() {
         <header className="bg-black border-b border-gray-700 w-screen">
             <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
                 {/*<!-- lg+ -->*/}
-                <nav className="flex items-center justify-between h-16 lg:h-20">
+                <nav className="flex items-center justify-between h-12 lg:h-16">
                     <div className="flex-shrink-0">
                         <a href="#" title="" className="flex">
                             <p className="text-5xl">Leilão Legal</p>
