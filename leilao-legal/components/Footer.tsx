@@ -3,9 +3,9 @@ import React from "react";
 
 export default function Home() {
     return (
-        <div className="mt-10 border-t border-gray-100 pt-4 w-screen h-14">
-            <p className="flex justify-between text-xs/relaxed text-gray-500">
-                <p className="flex justify-center w-1/2 ">
+        <div className=" border-t border-gray-100 pt-3 w-screen h-14">
+            <div className="flex justify-between text-xs/relaxed text-gray-500">
+                <div className="flex justify-center w-1/2 ">
                     <p className="pr-2">©</p>
                     <Link
                         href="https://github.com/GuilhermeBn198"
@@ -14,8 +14,8 @@ export default function Home() {
                         Guilherme Bernardo
                     </Link>
                     <p className="pr-2">2023.</p>
-                </p>
-                <p className="flex justify-center w-1/2">
+                </div>
+                <div className="flex justify-center w-1/2">
                     <p className="pr-2">Created with:</p>
                     <p className="text-gray-700 underline transition hover:text-gray-700/75 pr-2">
                         NextJs + Socket.io
@@ -24,8 +24,8 @@ export default function Home() {
                     <p className="pr-2 text-gray-700 underline transition hover:text-gray-700/75">
                         Supabase + Node.js.
                     </p>
-                </p>
-            </p>
+                </div>
+            </div>
         </div>
     );
 }
