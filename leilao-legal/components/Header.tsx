@@ -9,11 +9,7 @@ export default function Home() {
                 <nav className="flex items-center justify-between h-16 lg:h-20">
                     <div className="flex-shrink-0">
                         <a href="#" title="" className="flex">
-                            <img
-                                className="w-auto h-8 lg:h-10"
-                                src="https://cdn.rareblocks.xyz/collection/celebration/images/logo-alt.svg"
-                                alt=""
-                            />
+                            <p className="text-5xl">Leilão Legal</p>
                         </a>
                     </div>
 
@@ -40,38 +36,10 @@ export default function Home() {
                     <div className="hidden md:flex md:items-center md:space-x-10">
                         <a
                             href="#"
-                            title=""
+                            title="Minha Conta"
                             className="text-sm font-medium text-white transition-all duration-200 lg:text-base hover:text-opacity-70 focus:text-opacity-70"
                         >
-                            {" "}
-                            Features{" "}
-                        </a>
-
-                        <a
-                            href="#"
-                            title=""
-                            className="text-sm font-medium text-white transition-all duration-200 lg:text-base hover:text-opacity-70 focus:text-opacity-70"
-                        >
-                            {" "}
-                            Solutions{" "}
-                        </a>
-
-                        <a
-                            href="#"
-                            title=""
-                            className="text-sm font-medium text-white transition-all duration-200 lg:text-base hover:text-opacity-70 focus:text-opacity-70"
-                        >
-                            {" "}
-                            Resources{" "}
-                        </a>
-
-                        <a
-                            href="#"
-                            title=""
-                            className="text-sm font-medium text-white transition-all duration-200 lg:text-base hover:text-opacity-70 focus:text-opacity-70"
-                        >
-                            {" "}
-                            Pricing{" "}
+                            Minha Conta{" "}
                         </a>
                     </div>
                 </nav>
@@ -101,38 +69,10 @@ export default function Home() {
                     <nav className="flex flex-col items-center mt-10 space-y-2">
                         <a
                             href="#"
-                            title=""
+                            title="Minha Conta"
                             className="py-2 font-medium text-white transition-all duration-200 focus:text-opacity-70"
                         >
-                            {" "}
-                            Features{" "}
-                        </a>
-
-                        <a
-                            href="#"
-                            title=""
-                            className="py-2 font-medium text-white transition-all duration-200 focus:text-opacity-70"
-                        >
-                            {" "}
-                            Solutions{" "}
-                        </a>
-
-                        <a
-                            href="#"
-                            title=""
-                            className="py-2 font-medium text-white transition-all duration-200 focus:text-opacity-70"
-                        >
-                            {" "}
-                            Resources{" "}
-                        </a>
-
-                        <a
-                            href="#"
-                            title=""
-                            className="py-2 font-medium text-white transition-all duration-200 focus:text-opacity-70"
-                        >
-                            {" "}
-                            Pricing{" "}
+                            Minha Conta{" "}
                         </a>
                     </nav>
                 </nav>
