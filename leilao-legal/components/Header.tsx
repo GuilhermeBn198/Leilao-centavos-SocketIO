@@ -3,13 +3,13 @@ import React from "react";
 
 export default function Home() {
     return (
-        <header className="bg-black border-b border-gray-700 w-screen">
+        <header className="bg-sky-900 border-b border-gray-100 w-screen fixed top-0">
             <div className="mx-auto max-w-4xl sm:px-6 lg:px-8 h-14">
                 {/*<!-- lg+ -->*/}
                 <nav className="flex items-center justify-between h-12 lg:h-16">
                     <div className="flex-shrink-0">
                         <a href="#" title="" className="flex">
-                            <p className="text-3xl">Leilão Legal</p>
+                            <p className="text-lg">Leilão Legal</p>
                         </a>
                     </div>
                     <div className="hidden md:flex md:items-center md:space-x-10">

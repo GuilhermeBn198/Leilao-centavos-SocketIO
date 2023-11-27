@@ -6,6 +6,8 @@ interface Item {
     descricao: string;
     valor: number;
     image: string;
+    ultimo_lance: string;
+    dono: string;
 }
 
 interface GridProps {
@@ -13,13 +15,14 @@ interface GridProps {
 }
 
 const Grid: React.FC<GridProps> = ({ items }) => (
-    <div className="grid grid-cols-9 gap-4">
+    <div className="grid grid-cols-8 gap-2">
         {items.map((item, index) => (
-            <div key={index} className="p-2 border border-gray-200 rounded max-h-64 max-w-4xl items-center flex flex-col">
-                <h2 className="text-sm font-bold mb-1">{item.nome}</h2>
+            <div key={index} className="p-2 border border-gray-200 rounded max-h-64 max-w-4xl items-center justify-around flex flex-col bg-lime-800">
+                <h2 className="text-base font-bold mb-0">{item.nome}</h2>
                 <img src={item.image} alt={item.nome} loading="lazy" style={{width: '100px', height: '100px',objectFit: 'cover', borderRadius: '10px'}} />
-                
-                <p className="text-xs">{item.descricao}</p>
+                <p className="text-minusculo">{item.descricao}</p>
+                <p className="text-sm"><strong>Dono: </strong>{item.dono}</p>
+                <p className="text-sm"><strong>ultimo lance:</strong> {item.ultimo_lance}</p>
                 <button className="bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 rounded text-xs">
                     Comprar
                 </button>

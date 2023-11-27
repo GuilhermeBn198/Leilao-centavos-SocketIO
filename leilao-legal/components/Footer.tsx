@@ -3,8 +3,8 @@ import React from "react";
 
 export default function Home() {
     return (
-        <div className=" border-t border-gray-100 pt-3 w-screen h-14">
-            <div className="flex justify-between text-xs/relaxed text-gray-500">
+        <div className=" border-t border-gray-100 p-3 w-screen h-14 fixed bottom-0 bg-black">
+            <div className="flex justify-between text-sm/relaxed text-gray-500">
                 <div className="flex justify-center w-1/2 ">
                     <p className="pr-2">©</p>
                     <Link
