@@ -7,7 +7,7 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ onLogout }) => {
     return (
-        <header className="bg-stone-500 border-b border-gray-100 w-screen fixed top-0">
+        <header className="bg-stone-600 border-b border-gray-100 w-screen fixed top-0">
             <div className="mx-auto max-w-4xl sm:px-6 lg:px-8 h-16">
                 {/*<!-- lg+ -->*/}
                 <nav className="flex items-center justify-center h-12 lg:h-16">

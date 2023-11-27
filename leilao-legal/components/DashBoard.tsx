@@ -25,8 +25,8 @@ export default function DashBoard({ items, socket }: DashBoardProps) {
     };
 
     return (
-        <div className={"flex flex-col w-screen h-screen p-4 bg-teal-950 overflow-clip pt-20"}>
-            <div className="flex h-16 bg-black text-sm/relaxed text-gray-500 border-l-indigo-800 w-full justify-around items-center rounded ">
+        <div className={"flex flex-col w-screen h-screen p-4 bg-teal-950 overflow-clip pt-20 overflow-y-scroll"}>
+            <div className="flex h-16 bg-stone-600 text-sm/relaxed text-gray-500 border-l-indigo-800 w-full justify-around items-center rounded">
                 <div className="flex items-center justify-around w-1/6 h-full ">
                     <p>
                         <strong>Conta Logada:</strong>

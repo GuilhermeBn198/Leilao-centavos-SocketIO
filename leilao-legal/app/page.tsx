@@ -73,7 +73,7 @@ export default function Home() {
     }, []);
 
     return (
-        <main className="flex w-screen h-screen flex-col justify-center items-center ">
+        <main className="flex w-screen h-screen flex-col justify-center items-center  overflow-hidden">
             {isModalOpen && <LoginModal onLogin={handleLogin} />}
       {user ? (
         <div>
