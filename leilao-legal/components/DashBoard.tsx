@@ -4,12 +4,12 @@ import { FC } from 'react';
 import Grid from './Grid';
 
 interface DashBoardProps {
-    items: Array<{ nome: string; descricao: string; valor: number; image: string; ultimo_lance: string; dono: string}>;
+    items: Array<{ nome_prod: string; descricao: string; valor: number; image: string; ultimo_lance: string; dono: string}>;
    }
 
    export default function DashBoard({ items }: DashBoardProps) {
     const transformedItems = items.map(item => ({
-        title: item.nome,
+        title: item.nome_prod,
         description: item.descricao,
       }));
     return (
