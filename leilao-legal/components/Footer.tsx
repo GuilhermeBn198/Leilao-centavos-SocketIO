@@ -3,7 +3,7 @@ import React from "react";
 
 export default function Home() {
     return (
-        <div className=" border-t border-gray-100 p-3 w-screen h-14 fixed bottom-0 bg-black">
+        <div className=" border-t border-gray-100 p-3 w-screen h-10 fixed bottom-0 bg-stone-500">
             <div className="flex justify-between text-sm/relaxed text-gray-500">
                 <div className="flex justify-center w-1/2 ">
                     <p className="pr-2">©</p>
