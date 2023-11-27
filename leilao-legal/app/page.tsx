@@ -51,7 +51,7 @@ export default function Home() {
     return (
         <main className="flex w-screen h-screen flex-col justify-center items-center mt-14 ">
             <Header />
-            <DashBoard items={items} />
+            <DashBoard items={items} socket={socket}/>
             <Footer />
         </main>
     );

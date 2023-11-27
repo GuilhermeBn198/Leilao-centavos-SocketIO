@@ -58,7 +58,7 @@ socketIO.on("connection", (socket) => {
     
             const dadosString = JSON.stringify(dadosObjeto, null, 2);
             fs.writeFileSync(dataFilePath, dadosString);
-    
+            console.log(dadosObjeto);
             socket.broadcast.emit("addProductResponse", data);
         } catch (error) {
             console.error("Erro ao adicionar produto:", error);
@@ -79,7 +79,7 @@ socketIO.on("connection", (socket) => {
                 data.image,
                 data.descricao
             );
-    
+            console.log(dadosObjeto);
             socket.broadcast.emit("bidProductResponse", data);
         } catch (error) {
             console.error("Erro ao dar lance no produto:", error);
@@ -90,8 +90,8 @@ socketIO.on("connection", (socket) => {
 app.get("/api", (req, res) => {
     try {
         const dadosSalvos = fs.readFileSync(dataFilePath);
-        const produtos = JSON.parse(dadosSalvos);
-        res.json(produtos);
+        const dados = JSON.parse(dadosSalvos);
+        res.json(dados);
     } catch (error) {
         console.error("Erro ao obter dados:", error);
         res.status(500).json({ error: "Erro ao obter dados" });
