@@ -64,6 +64,30 @@
       "dono": null,
       "ultimo_lance": "",
       "image": "https://th.bing.com/th/id/R.69032c61e3d23ded3bfe7edd4a70fe0b?rik=z8VAUYFAubtVdg&pid=ImgRaw&r=0"
+    },
+    {
+      "nome_prod": "bomberman",
+      "descricao": "é um bomberman simplesmente é um bomberman",
+      "valor": 10,
+      "dono": null,
+      "ultimo_lance": "",
+      "image": "https://th.bing.com/th/id/R.2fd524e72c20dee1fb0caeca9d20c333?rik=kn8PrI%2bjSgL3TQ&riu=http%3a%2f%2fvignette3.wikia.nocookie.net%2fdeathbattlefanon%2fimages%2fb%2fb5%2fSSBBRZS_Bomberman.png%2frevision%2flatest%3fcb%3d20151123082915&ehk=PhADEwZt%2fas34fO0AbOSrwAh%2bRlonDduKtYJ%2fYU5Q30%3d&risl=&pid=ImgRaw&r=0"
+    },
+    {
+      "nome_prod": "ranger vermelho",
+      "descricao": "ranger vermelho",
+      "valor": 12,
+      "dono": "ALZENIR PEREIRA BERNARDO",
+      "ultimo_lance": "",
+      "image": "https://th.bing.com/th/id/OIP.C--1WloEVhKVvR3rY_jHTQHaIX?rs=1&pid=ImgDetMain"
+    },
+    {
+      "nome_prod": "ranger vermelho",
+      "descricao": "ranger vermelho",
+      "valor": 12,
+      "dono": "ALZENIR PEREIRA BERNARDO",
+      "ultimo_lance": "",
+      "image": "https://th.bing.com/th/id/OIP.C--1WloEVhKVvR3rY_jHTQHaIX?rs=1&pid=ImgDetMain"
     }
   ]
 }

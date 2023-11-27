@@ -24,7 +24,7 @@ const Grid: React.FC<GridProps> = ({ items }) => (
                 <p className="text-minusculo text-center"><strong>Dono: </strong>{item.dono}</p>
                 <p className="text-minusculo text-center"><strong>ultimo lance:</strong> {item.ultimo_lance}</p>
                 <button className="bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 rounded text-xs">
-                    Comprar
+                    Dar Lance
                 </button>
             </div>
         ))}
