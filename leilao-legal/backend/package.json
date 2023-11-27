@@ -1,7 +1,7 @@
 {
-  "name": "server",
-  "version": "1.0.0",
-  "description": "",
+  "name": "servidor-socket",
+  "version": "1.0.1",
+  "description": "provedor de conexão e atualizações ao banco de dados ultra simplificado",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,7 +9,7 @@
     "start": "node index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Guilherme Bernardo",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",

@@ -1,6 +1,4 @@
-import Link from "next/link";
 import React from "react";
-import { FC } from 'react';
 import Grid from './Grid';
 
 interface DashBoardProps {
@@ -8,10 +6,6 @@ interface DashBoardProps {
    }
 
    export default function DashBoard({ items }: DashBoardProps) {
-    const transformedItems = items.map(item => ({
-        title: item.nome_prod,
-        description: item.descricao,
-      }));
     return (
         <div className="flex flex-col pt-1 w-screen h-full p-4 bg-teal-950 overflow-clip">
             <div className="flex h-16 bg-black text-sm/relaxed text-gray-500 border-l-indigo-800 w-full justify-around items-center rounded ">
