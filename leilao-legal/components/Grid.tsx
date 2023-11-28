@@ -17,7 +17,7 @@ interface GridProps {
 const Grid: React.FC<GridProps> = ({ items }) => (
     <div className="grid grid-cols-8 gap-2">
         {items.map((item, index) => (
-            <div key={index} className="p-2 border border-gray-200 rounded max-h-64 max-w-4xl items-center justify-around flex flex-col bg-lime-800">
+            <div key={index} className="p-2 border border-gray-200 rounded max-h-64 max-w-4xl items-center justify-around flex flex-col bg-indigo-500">
                 <h2 className="text-base font-bold mb-0 text-center">{item.nome_prod}</h2>
                 <img src={item.image} alt={item.nome_prod} loading="lazy" style={{width: '100px', height: '100px',objectFit: 'cover', borderRadius: '10px'}} />
                 <p className="text-minusculo text-center">{item.descricao}</p>

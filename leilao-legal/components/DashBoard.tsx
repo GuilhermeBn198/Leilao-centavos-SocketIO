@@ -26,8 +26,8 @@ export default function DashBoard({ items, socket }: DashBoardProps) {
 
     return (
         <div className={"flex flex-col w-screen h-screen p-4 bg-teal-950 overflow-clip pt-20 overflow-y-scroll"}>
-            <div className="flex h-16 bg-stone-600 text-sm/relaxed text-gray-500 border-l-indigo-800 w-full justify-around items-center rounded">
-                <div className="flex items-center justify-around w-1/6 h-full ">
+            <div className="flex text-indigo-500 text-sm/relaxed bg-stone-800 border-l-indigo-800 w-full justify-around items-center rounded min-h-fit p-4">
+                <div className="flex items-center justify-around w-1/6 ">
                     <p>
                         <strong>Conta Logada:</strong>
                     </p>
@@ -38,7 +38,7 @@ export default function DashBoard({ items, socket }: DashBoardProps) {
                 <div>
                     <button
                         onClick={openModal}
-                        className="bg-orange-600 hover:bg-orange-800 text-white font-bold py-2 px-4 rounded"
+                        className="bg-indigo-800 hover:bg-indigo-900 text-white font-bold py-2 px-4 rounded"
                     >
                         Criar Leilão
                     </button>
