@@ -31,8 +31,8 @@ const LoginModal: React.FC<LoginModalProps> = ({ onLogin }) => {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
-      
-      <form onSubmit={handleSubmit} className="p-6 bg-white rounded shadow-lg ">
+      <form onSubmit={handleSubmit} className="p-6 bg-slate-400 rounded shadow-lg ">
+      <h2 className="text-lg w-full text-center text-slate-950 mb-2"><strong>Adicione seus dados de Login</strong></h2>
         <input
           type="text"
           name="nome_user"
