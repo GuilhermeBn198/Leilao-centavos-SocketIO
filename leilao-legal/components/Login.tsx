@@ -31,6 +31,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ onLogin }) => {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+      
       <form onSubmit={handleSubmit} className="p-6 bg-white rounded shadow-lg ">
         <input
           type="text"

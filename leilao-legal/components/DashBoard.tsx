@@ -46,7 +46,11 @@ export default function DashBoard({ items, socket }: DashBoardProps) {
             </div>
             <section className="flex mt-2 justify-center">
                 <Grid items={items} />
-                {isModalOpen && <AddProduct closeModal={closeModal} socket={socket} />}
+                {isModalOpen && (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center backdrop-filter backdrop-blur z-50">
+        <AddProduct closeModal={closeModal} socket={socket} />
+    </div>
+)}
             </section>
         </div>
     );
