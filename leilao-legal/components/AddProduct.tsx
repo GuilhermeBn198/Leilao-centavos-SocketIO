@@ -33,7 +33,7 @@ const AddProduct: React.FC<AddProductProps> = ({ closeModal, socket }) => {
         {/* Add a background color, padding, rounded corners, and a shadow */}
         <button
         className="bg-orange-600 hover:bg-orange-800 text-white font-bold py-2 px-4 rounded"
-        onClick={closeModal}
+        onClick={closeModal}    
         >
         Close
         </button>
