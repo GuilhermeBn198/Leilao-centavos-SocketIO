@@ -16,14 +16,15 @@ interface DashBoardProps {
 
 export default function DashBoard({ items, socket }: DashBoardProps) {
     const [isModalOpen, setIsModalOpen] = useState(false);
-
+    
     const openModal = () => {
         setIsModalOpen(true);
     };
     const closeModal = () => {
         setIsModalOpen(false);
     };
-
+    console.log('Props in DashBoard:', socket);
+    console.log('items in DashBoard:', items); 
     return (
         <div
             className={
@@ -49,7 +50,7 @@ export default function DashBoard({ items, socket }: DashBoardProps) {
                 </div>
             </div>
             <section className="flex mt-2 justify-center">
-                <Grid items={items} />
+                <Grid items={items } />
                 {isModalOpen && (
                     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center backdrop-filter backdrop-blur z-50">
                         <AddProduct closeModal={closeModal} socket={socket} />
