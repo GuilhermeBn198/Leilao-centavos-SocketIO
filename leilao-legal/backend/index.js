@@ -1,5 +1,4 @@
 const express = require("express");
-const { Pool } = require('pg');
 const app = express();
 const cors = require("cors");
 const http = require("http").Server(app);
@@ -15,26 +14,18 @@ app.use(cors());
 
 const dataFilePath = "data.json";
 
-const pool = new Pool({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'database_leilao_legal',
-    password: '3332233',
-    port: 5432,
-});
-
 
 function encontrarProduto(nomeChave, meuArray, ultimoArrematante, valor, image, descricao) {
     const produtoIndex = meuArray.findIndex((item) => item.nome_prod === nomeChave);
-    
+
     if (produtoIndex !== -1) {
         meuArray[produtoIndex].ultimo_lance = ultimoArrematante;
         meuArray[produtoIndex].valor = valor;
         meuArray[produtoIndex].image = image;
         meuArray[produtoIndex].descricao = descricao;
-        
+
         const dadosString = JSON.stringify({ products: meuArray }, null, 2);
-        
+
         try {
             fs.writeFileSync(dataFilePath, dadosString);
         } catch (error) {
@@ -43,49 +34,70 @@ function encontrarProduto(nomeChave, meuArray, ultimoArrematante, valor, image, 
     }
 }
 
-app.get("/api", (req, res) => {
-    pool.query('SELECT * FROM products', (error, results) => {
-        if (error) {
-            throw error;
-        }
-        res.status(200).json(results.rows);
+socketIO.on("connection", (socket) => {
+    console.log(`⚡: ${socket.id} usuário acabou de se conectar!`);
+
+    socket.on("disconnect", () => {
+        console.log("🔥: Um usuário desconectou");
     });
+
+    socket.on("addProduct", (data) => {
+        try {
+            const dadosSalvos = fs.readFileSync(dataFilePath);
+            const dadosObjeto = JSON.parse(dadosSalvos);
+    
+            // Use the new keys and add the new properties
+            dadosObjeto.products.push({
+                nome_prod: data.nome_prod,
+                descricao: data.descricao,
+                valor: data.valor,
+                dono: data.dono,
+                ultimo_lance: data.ultimo_lance,
+                image: data.image
+            });
+    
+            const dadosString = JSON.stringify(dadosObjeto, null, 2);
+            fs.writeFileSync(dataFilePath, dadosString);
+            console.log(dadosObjeto);
+            socket.broadcast.emit("addProductResponse", data);
+        } catch (error) {
+            console.error("Erro ao adicionar produto:", error);
+        }
+    });
+
+    socket.on("bidProduct", (data) => {
+        try {
+            const dadosSalvos = fs.readFileSync(dataFilePath);
+            const dadosObjeto = JSON.parse(dadosSalvos);
+    
+            // Adjust the call to `encontrarProduto` to include the new parameters
+            encontrarProduto(
+                data.nome_prod,
+                dadosObjeto.products,
+                data.ultimo_lance,
+                data.valor,
+                data.image,
+                data.descricao
+            );
+            console.log(dadosObjeto);
+            socket.broadcast.emit("bidProductResponse", data);
+        } catch (error) {
+            console.error("Erro ao dar lance no produto:", error);
+        }
+    });
+});
+
+app.get("/api", (req, res) => {
+    try {
+        const dadosSalvos = fs.readFileSync(dataFilePath);
+        const dados = JSON.parse(dadosSalvos);
+        res.json(dados);
+    } catch (error) {
+        console.error("Erro ao obter dados:", error);
+        res.status(500).json({ error: "Erro ao obter dados" });
+    }
 });
 
 http.listen(PORT, () => {
     console.log(`Servidor ouvindo na porta ${PORT}`);
 });
-
-socketIO.on("connection", (socket) => {
-    console.log(`⚡: ${socket.id} usuário acabou de se conectar!`);
-    
-    socket.on("disconnect", () => {
-        console.log("🔥: Um usuário desconectou");
-    });
-    
-    socket.on("addProduct", (data) => {
-        const query = 'INSERT INTO products(nome_prod, descricao, valor, dono, ultimo_lance, image) VALUES($1, $2, $3, $4, $5, $6)';
-        const values = [data.nome_prod, data.descricao, data.valor, data.dono, data.ultimo_lance, data.image];
-        
-        pool.query(query, values, (error, results) => {
-            if (error) {
-                throw error;
-            }
-            console.log('Product added successfully!');
-            socket.broadcast.emit("addProductResponse", data);
-        });
-    });
-    
-    socket.on("bidProduct", (data) => {
-        const query = 'UPDATE products SET ultimo_lance = $1, valor = $2 WHERE nome_prod = $3';
-        const values = [data.ultimo_lance, data.valor, data.nome_prod];
-        
-        pool.query(query, values, (error, results) => {
-            if (error) {
-                throw error;
-            }
-            console.log('Product updated successfully!');
-            socket.broadcast.emit("bidProductResponse", data);
-        });
-    });
-})
