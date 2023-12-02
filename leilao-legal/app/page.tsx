@@ -7,12 +7,15 @@ import socket from "@/app/socket";
 import LoginModal from "@/components/Login";
 
 interface Item {
-    nome_prod: string;
-    descricao: string;
-    valor: number;
+    id: number;
+    name: string;
+    description: string;
     image: string;
-    ultimo_lance: string;
-    dono: string;
+    value: number;
+    time: number;
+    sold: boolean;
+    startAt: string;
+    bidders: string[];
 }
 
 interface user {
@@ -25,6 +28,7 @@ export default function Home() {
     const [items, setItems] = useState<Item[]>([]);
     const [isModalOpen, setIsModalOpen] = useState(true);
     const [user, setUser] = useState<user | null>(null);
+    const [lances, setLances] = useState(15);
     
     const handleLogin = (userData:user) => {
       setIsModalOpen(false);
@@ -36,54 +40,42 @@ export default function Home() {
         setUser(null);
         localStorage.removeItem('nome_user');
         setIsModalOpen(true);
-      };
+    };
 
-    // login functions
-
+    const subtractLance = () => {
+        setLances(lances - 1);
+    };
 
     useEffect(() => {
-        socket.on("addProductResponse", (data: Item) => {
-            console.log('addProductResponse', data); 
-            setItems((prevItems) => [...prevItems, data]);
+        socket.on("items", (data: Item[]) => {
+          setItems(data);
         });
-
-        socket.on("bidProductResponse", (data: Item) => {
-            console.log('bidProductResponse', data);
-            setItems((prevItems) =>
-                prevItems.map((item) =>
-                
-                    item.nome_prod === data.nome_prod ? data : item
-                )
-            );
-        });
-
+      
         // Fetch initial data
         fetch("http://localhost:3000/api")
-            .then((response) => response.json())
-            .then((data) => {
-                console.log('fetch /api', data);
-                setItems(data.products);
-            });
-
+          .then((response) => response.json())
+          .then((data) => {
+            setItems(data.products);
+          });
+      
         return () => {
-            // Cleanup
-            socket.off("addProductResponse");
-            socket.off("bidProductResponse");
+          // Cleanup
+          socket.off("items");
         };
     }, []);
 
     return (
         <main className="flex w-screen h-screen flex-col justify-center items-center  overflow-hidden">
             {isModalOpen && <LoginModal onLogin={handleLogin} />}
-      {user ? (
-        <div>
-          <Header onLogout={handleLogout}/>
-          <DashBoard items={items} socket={socket}/>
-          <Footer />
-        </div>
-      ) : (
-        <div>Please log in to view this content.</div>
-      )}
+            {user ? (
+                <div>
+                    <Header onLogout={handleLogout}/>
+                    <DashBoard items={items} socket={socket} user={user.nome_user} lances={lances} subtractLance={subtractLance} />
+                    <Footer />
+                </div>
+            ) : (
+                <div>Please log in to view this content.</div>
+            )}
         </main>
     );
 }

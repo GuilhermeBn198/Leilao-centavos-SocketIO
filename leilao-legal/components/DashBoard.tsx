@@ -4,17 +4,23 @@ import AddProduct from "./AddProduct";
 
 interface DashBoardProps {
     items: Array<{
-        nome_prod: string;
-        descricao: string;
-        valor: number;
-        image: string;
-        ultimo_lance: string;
-        dono: string;
+      id: number;
+      name: string;
+      description: string;
+      image: string;
+      value: number;
+      time: number;
+      sold: boolean;
+      startAt: string;
+      bidders: string[];
     }>;
     socket: any;
+    user: string;
+    lances: number;
+    subtractLance: () => void;
 }
 
-export default function DashBoard({ items, socket }: DashBoardProps) {
+export default function DashBoard({ items, socket, user, lances, subtractLance }: DashBoardProps) {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const openModal = () => {
@@ -49,7 +55,7 @@ export default function DashBoard({ items, socket }: DashBoardProps) {
                 </div>
             </div>
             <section className="flex mt-2 justify-center">
-                <Grid items={items} />
+                <Grid items={items} socket={socket} user={user} lances={lances} subtractLance={subtractLance} />
                 {isModalOpen && (
                     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center backdrop-filter backdrop-blur z-50">
                         <AddProduct closeModal={closeModal} socket={socket} />
