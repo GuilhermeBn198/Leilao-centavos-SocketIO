@@ -8,10 +8,10 @@ import LoginModal from "@/components/Login";
 
 interface Item {
     id: number;
-    name: string;
-    description: string;
+    nome_prod: string;
+    descricao: string;
     image: string;
-    value: number;
+    valor: number;
     time: number;
     sold: boolean;
     startAt: string;

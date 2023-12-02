@@ -7,7 +7,12 @@ Esse aplicativo web foi feito em NextJS, com auxílio de um servidor backend nod
 - [x] Criar identidade visual (frontend)
 - [x] Coletar dados estáticos do servidor via socketIO
 - [x] Criar autenticação de usuário simples
-- [ ] Coletar dados dinâmicos do Supabase/SQLite pelo servidor
+- [x] Coletar dados dinâmicos do database pelo servidor
+  - [x] Contador de tempo do leilão!
+- [x] Dar Lances para o usuário logado
+  - [x] tira lance do usuário
+  - [x] aumentar o valor do lance no item produto
+- [ ] Criar novo leilão
 
 ## Ambiente de Desenvolvimento
 

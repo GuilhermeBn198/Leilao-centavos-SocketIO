@@ -62,10 +62,10 @@ io.on("connection", (socket) => {
   socket.on("add_item", (data) => {
     db.push({
       id: db.length + 1,
-      name: data[0],
-      description: data[1],
+      nome_prod: data[0],
+      descricao: data[1],
       image: data[2],
-      value: 0,
+      valor: 0,
       time: 60,
       sold: false,
       startAt: data[3],
@@ -74,17 +74,20 @@ io.on("connection", (socket) => {
   });
 
   socket.on("bid", (data) => {
-    console.log(data);
+    console.log(`Received bid event for item ${data[0]} by user ${data[1]}`);
     db = db.map((item) => {
-      if (item.id === data[0]) {
-        item.time = 60;
-        item.value += 0.01;
-        item.bidders.push(data[1]);
-      }
+        if (item.id === data[0]) {
+            item.time = 60;
+            item.valor = (parseFloat(item.valor) + 0.01).toFixed(2);
+            item.bidders.push(data[1]);
+            console.log(`Updated item ${item.id}:`, item);
+        }
 
-      return item;
+        return item;
     });
-  });
+
+    io.emit("items", getItems());
+});
 });
 
 const PORT = 3000;

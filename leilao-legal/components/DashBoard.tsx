@@ -5,10 +5,10 @@ import AddProduct from "./AddProduct";
 interface DashBoardProps {
     items: Array<{
       id: number;
-      name: string;
-      description: string;
+      nome_prod: string;
+      descricao: string;
       image: string;
-      value: number;
+      valor: number;
       time: number;
       sold: boolean;
       startAt: string;
