@@ -18,4 +18,4 @@ Esse aplicativo web foi feito em NextJS, com auxílio de um servidor backend nod
 
 1. Clone o repositório
 2. Instale as dependências usando `npm i`
-3. Inicie o servidor de desenvolvimento usando `npm run dev`
+3. Inicie o servidor de desenvolvimento usando `npm run dev` no backend E no frontend
