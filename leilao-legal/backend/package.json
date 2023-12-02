@@ -2,11 +2,11 @@
   "name": "servidor-socket",
   "version": "1.0.1",
   "description": "provedor de conexão e atualizações ao banco de dados ultra simplificado",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.js",
-    "start": "node index.js"
+    "dev": "nodemon server.js",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "Guilherme Bernardo",
