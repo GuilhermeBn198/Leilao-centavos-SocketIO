@@ -16,14 +16,12 @@ const AddProduct: React.FC<AddProductProps> = ({ closeModal, socket }) => {
     
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        socket.emit("addProduct", {
+        socket.emit("add_item", [
             nome_prod,
             descricao,
-            valor,
-            ultimo_lance,
             image,
-            dono: localStorage.getItem("nome_user"), // FAZER MODAL COM UM IF E USESTATE NA PAGE.TSX E JOGAR NO LOCALSTORAGE
-        });
+            new Date().toISOString(), // startAt
+        ]);
         closeModal(); // Close the modal after submitting the form
     };
     return (
