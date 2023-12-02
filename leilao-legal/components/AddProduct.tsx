@@ -11,7 +11,6 @@ const AddProduct: React.FC<AddProductProps> = ({ closeModal, socket }) => {
     const [nome_prod, setnome_prod] = useState("");
     const [valor, setvalor] = useState(0);
     const [descricao, setdescricao] = useState("");
-    const [ultimo_lance, setultimo_lance] = useState("");
     const [image, setimage] = useState("");
     
     const handleSubmit = (e: React.FormEvent) => {

@@ -43,7 +43,7 @@ export default function DashBoard({ items, socket, user, lances, subtractLance, 
                         <strong>Conta Logada:</strong>
                     </p>
                     <p>
-                        {localStorage.getItem("nome_user")}
+                        {user}
                     </p>
                     <p>
                         <strong>Lances: {lances}</strong>
