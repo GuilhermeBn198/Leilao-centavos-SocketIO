@@ -28,7 +28,7 @@ export default function Home() {
     const [items, setItems] = useState<Item[]>([]);
     const [isModalOpen, setIsModalOpen] = useState(true);
     const [user, setUser] = useState<user | null>(null);
-    const [lances, setLances] = useState(15);
+    const [lances, setLances] = useState(15); // Declare lances state here
     
     const handleLogin = (userData:user) => {
       setIsModalOpen(false);
@@ -46,17 +46,14 @@ export default function Home() {
         setLances(lances - 1);
     };
 
+    const addLances = () => {
+        setLances(lances + 5);
+    };
+
     useEffect(() => {
         socket.on("items", (data: Item[]) => {
           setItems(data);
         });
-      
-        // Fetch initial data
-        fetch("http://localhost:3000/api")
-          .then((response) => response.json())
-          .then((data) => {
-            setItems(data.products);
-          });
       
         return () => {
           // Cleanup
@@ -70,7 +67,7 @@ export default function Home() {
             {user ? (
                 <div>
                     <Header onLogout={handleLogout}/>
-                    <DashBoard items={items} socket={socket} user={user.nome_user} lances={lances} subtractLance={subtractLance} />
+                    <DashBoard items={items} socket={socket} user={user.nome_user} lances={lances} subtractLance={subtractLance} addLances={addLances} />
                     <Footer />
                 </div>
             ) : (

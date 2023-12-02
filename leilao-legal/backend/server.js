@@ -16,7 +16,12 @@ const io = new Server(httpServer, {
 });
 
 function getItems() {
-  const data = db.filter(
+  const data = db.map((item) => {
+    if (!item.startAt) {
+      item.startAt = new Date().toISOString();
+    }
+    return item;
+  }).filter(
     (item) =>
       !item.sold && item.time > 0 && Date.parse(item.startAt) <= new Date(),
   );

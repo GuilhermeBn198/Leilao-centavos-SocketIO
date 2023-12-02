@@ -27,10 +27,10 @@ const Grid: React.FC<GridProps> = ({
     lances,
     subtractLance,
 }) => {
-    console.log("Items: ", items); // Log the items
-    console.log("Socket: ", socket); // Log the socket
-    console.log("User: ", user); // Log the user
-    console.log("Lances: ", lances); // Log the lances
+    // console.log("Items: ", items); // Log the items
+    // console.log("Socket: ", socket); // Log the socket
+    // console.log("User: ", user); // Log the user
+    // console.log("Lances: ", lances); // Log the lances
 
     return (
         <div className="grid grid-cols-8 gap-2">

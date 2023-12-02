@@ -18,9 +18,10 @@ interface DashBoardProps {
     user: string;
     lances: number;
     subtractLance: () => void;
+    addLances: () => void;
 }
 
-export default function DashBoard({ items, socket, user, lances, subtractLance }: DashBoardProps) {
+export default function DashBoard({ items, socket, user, lances, subtractLance, addLances }: DashBoardProps) {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const openModal = () => {
@@ -44,6 +45,15 @@ export default function DashBoard({ items, socket, user, lances, subtractLance }
                     <p>
                         <strong>{localStorage.getItem("nome_user")}</strong>
                     </p>
+                    <p>
+                        <strong>Lances: {lances}</strong>
+                    </p>
+                    <button
+                        onClick={addLances}
+                        className="bg-indigo-800 hover:bg-indigo-900 text-white font-bold py-2 px-4 rounded"
+                    >
+                        Adicionar 5 Lances
+                    </button>
                 </div>
                 <div>
                     <button
