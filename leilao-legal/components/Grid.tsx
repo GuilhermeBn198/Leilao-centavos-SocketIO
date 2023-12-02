@@ -57,7 +57,7 @@ const Grid: React.FC<GridProps> = ({
                         {item.descricao}
                     </p>
                     <p className="text-minusculo text-center">
-                        <strong>Last Bidder: </strong>
+                        <strong>Ultimo Lance: </strong>
                         {item.bidders
                             ? item.bidders[item.bidders.length - 1]
                             : ""}
