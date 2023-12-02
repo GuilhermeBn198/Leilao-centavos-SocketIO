@@ -42,7 +42,7 @@ function run() {
         item.time -= 1;
 
         return item;
-      });
+      }); 
 
     io.emit("items", getItems());
     io.emit("winners", getSoldItems());
