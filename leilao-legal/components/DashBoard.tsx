@@ -38,12 +38,12 @@ export default function DashBoard({ items, socket, user, lances, subtractLance, 
             }
         >
             <div className="flex text-indigo-500 text-sm/relaxed bg-stone-800 border-l-indigo-800 w-full justify-around items-center rounded min-h-fit p-4">
-                <div className="flex items-center justify-around w-1/6 ">
+                <div className="flex items-center justify-around w-1/2 ">
                     <p>
                         <strong>Conta Logada:</strong>
                     </p>
                     <p>
-                        <strong>{localStorage.getItem("nome_user")}</strong>
+                        {localStorage.getItem("nome_user")}
                     </p>
                     <p>
                         <strong>Lances: {lances}</strong>

@@ -20,8 +20,6 @@ interface Item {
 
 interface user {
     nome_user: string,
-    email: string,
-    dinheiro: number
 }
 
 export default function Home() {
