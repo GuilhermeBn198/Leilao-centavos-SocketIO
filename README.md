@@ -12,7 +12,7 @@ Esse aplicativo web foi feito em NextJS, com auxílio de um servidor backend nod
 - [x] Dar Lances para o usuário logado
   - [x] tira lance do usuário
   - [x] aumentar o valor do lance no item produto
-- [ ] Criar novo leilão
+- [x] Criar novo leilão
 
 ## Ambiente de Desenvolvimento
 
